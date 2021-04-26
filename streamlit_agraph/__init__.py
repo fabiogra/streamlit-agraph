@@ -170,7 +170,7 @@ def _set_graphviz_layout(nodes, edges, config):
     except ImportError as e:
         raise ImportError("requires pygraphviz " "http://pygraphviz.github.io/") from e
       
-    G = pgv.AGraph(**getattr(config, 'graphviz_config'))
+    G = pgv.AGraph(**(getattr(config, 'graphviz_config') or {}))
     node_args = {}
     for node in nodes:
       node_id = getattr(node, 'id')
